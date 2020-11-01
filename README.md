@@ -1,2 +1,1 @@
-# brokerchunks
-Open broker solution
+# brokerchunks-api

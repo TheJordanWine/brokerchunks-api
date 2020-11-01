@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Exit on any error
+set -e
+
+
+
+doit() {
+    # keep track of the last executed command
+    trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+    # echo an error message before exiting
+    trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
+
+
+    # TODO: import this from one place
+    VERSION="0.0.1"
+    PACKAGE="brokerchunks-api"
+    COMPANY="brokerchunks"
+
+    # Clean it
+    rm -rf target/*.jar
+    rm -rf target/dependency/*
+
+    # Build it
+    mvn package
+
+    # Extract dependencies and app (faster container)
+    mkdir -p target/dependency && (cd target/dependency; jar -xf ../${PACKAGE}-${VERSION}.jar)
+
+    # Build container
+    docker build -t ${COMPANY}/${PACKAGE}:${VERSION} .
+
+    return 0
+}
+
+timeit doit
