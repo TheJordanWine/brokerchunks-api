@@ -1,4 +1,4 @@
-package com.brokerchunks.api;
+package com.drchunks.brokerchunks.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.brokerchunks.api;
+package com.drchunks.brokerchunks.api;
 
 import org.springframework.data.annotation.Id;
 
