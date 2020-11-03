@@ -3,10 +3,15 @@
 # TODO: import this from one place
 VERSION="0.0.1"
 PACKAGE="brokerchunks-api"
-COMPANY="brokerchunks"
+COMPANY="drchunks"
 
 ENTRY_PORT=8080
 CONATINER_PORT=8080
 EXTERNAL_IP="192.168.0.90"
 
-docker run -p ${ENTRY_PORT}:${CONATINER_PORT} ${COMPANY}/${PACKAGE}:${VERSION}
+
+if result=$(docker inspect ${PACKAGE} 2>/dev/null); then 
+	docker start ${PACKAGE}
+else
+	docker run -p ${ENTRY_PORT}:${CONATINER_PORT} --name ${PACKAGE} ${COMPANY}/${PACKAGE}
+fi

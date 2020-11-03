@@ -15,7 +15,7 @@ doit() {
     # TODO: import this from one place
     VERSION="0.0.1"
     PACKAGE="brokerchunks-api"
-    COMPANY="brokerchunks"
+    COMPANY="drchunks"
 
     # Clean it
     rm -rf target/*.jar
@@ -28,7 +28,7 @@ doit() {
     mkdir -p target/dependency && (cd target/dependency; jar -xf ../${PACKAGE}-${VERSION}.jar)
 
     # Build container
-    docker build -t ${COMPANY}/${PACKAGE}:${VERSION} .
+    docker build -t ${COMPANY}/${PACKAGE} .
 
     return 0
 }
