@@ -11,7 +11,7 @@ EXTERNAL_IP="192.168.0.90"
 
 
 if result=$(docker inspect ${PACKAGE} 2>/dev/null); then 
-	docker start ${PACKAGE}
-else
-	docker run -p ${ENTRY_PORT}:${CONATINER_PORT} --name ${PACKAGE} ${COMPANY}/${PACKAGE}
+	docker stop ${PACKAGE}
+	docker rm ${PACKAGE}
 fi
+docker run -p ${ENTRY_PORT}:${CONATINER_PORT} --name ${PACKAGE} ${COMPANY}/${PACKAGE}

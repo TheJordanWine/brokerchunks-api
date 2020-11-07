@@ -7,10 +7,10 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-@RepositoryRestResource(collectionResourceRel = "greetings", path = "greetings")
-@CrossOrigin(origins = "http://localhost:8081")
-public interface GreetingRepository extends MongoRepository<Greeting, String> {
+@RepositoryRestResource
+@CrossOrigin(origins = "http://localhost:3000")
+public interface TransactionRepository extends MongoRepository<Transaction, String> {
 
-    List<Greeting> findByContent(@Param("content") String content);
+    List<Transaction> findByStore(@Param("store") String store);
 
 }
