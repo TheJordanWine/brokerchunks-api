@@ -38,8 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         JwtWebSecurityConfigurer.forRS256(apiAudience, issuer).configure(http).authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/accounts").hasAuthority("read:accounts")
-                .antMatchers(HttpMethod.GET, "/transactions").authenticated().antMatchers(HttpMethod.GET, "/")
+                .antMatchers(HttpMethod.GET, "/accounts").hasAuthority("read:accounts").antMatchers(HttpMethod.GET, "/")
                 .permitAll();
     }
 }
